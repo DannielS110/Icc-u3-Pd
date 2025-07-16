@@ -1,18 +1,37 @@
-## Getting Started
+# 🔎 Proyecto Búsqueda Binaria
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+### 📌 Título: Algoritmo de Búsqueda Binaria  
+**Asignatura:** Estructura de Datos  
+**Carrera:** Computación  
+**Estudiante:** Daniel Sanchez  
+**Ciclo:** 2do Ciclo  
+**Fecha:** 21 de abril de 2025  
+**Profesor:** ING. PABLO TORRES  
+**Universidad:** Universidad Politécnica Salesiana  
 
-## Folder Structure
+---
 
-The workspace contains two folders by default, where:
+## 🔍 Descripción
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Este proyecto consiste en la **implementación del algoritmo de Búsqueda Binaria** aplicado a un arreglo de objetos `Persona`, cada uno con los atributos `nombre` y `edad`. El objetivo es encontrar la posición de una persona según su edad en un arreglo previamente ordenado.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+El programa:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+- 📦 Crea un arreglo de objetos `Persona` con nombre y edad.
+- 🔃 Ordena el arreglo de personas por edad.
+- 🔎 Permite buscar una edad específica utilizando **búsqueda binaria**.
+- 🧠 Muestra paso a paso el proceso de búsqueda:
+  - Índices: `bajo`, `alto`, `centro`.
+  - Comparaciones realizadas.
+  - Dirección de búsqueda (izquierda o derecha).
+- ✅ Informa si el valor fue encontrado o no.
 
-## Dependency Management
+---
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## 🚀 Ejecución
+
+version 1
+
+con 50
+
+<img width="1640" height="306" alt="image" src="https://github.com/user-attachments/assets/1dfd9863-190c-4a5d-b7ac-b9a460cfccc0" />
