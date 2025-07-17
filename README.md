@@ -1,30 +1,33 @@
-# 🔎 Proyecto Búsqueda Binaria
+# 🔎 Proyecto Laberinto “Maze Solver”
 
-### 📌 Título: Algoritmo de Búsqueda Binaria  
+📌 **Título:** Maze Solver Recursivo & Completo  
 **Asignatura:** Estructura de Datos  
 **Carrera:** Computación  
-**Estudiante:** Daniel Sanchez  
+**Estudiante:** Daniel Sánchez  
 **Ciclo:** 2do Ciclo  
-**Fecha:** 21 de abril de 2025  
+**Fecha:** 16 de julio de 2025  
 **Profesor:** ING. PABLO TORRES  
 **Universidad:** Universidad Politécnica Salesiana  
 
 ---
 
 ## 🔍 Descripción
+Este proyecto implementa dos versiones de un _solver_ para laberintos representados como matrices booleanas (`true` = camino, `false` = pared):
 
-Este proyecto consiste en la **implementación del algoritmo de Búsqueda Binaria** aplicado a un arreglo de objetos `Persona`, cada uno con los atributos `nombre` y `edad`. El objetivo es encontrar la posición de una persona según su edad en un arreglo previamente ordenado.
+1. **mazeSolverRecursivo**  
+   - Explora únicamente dos direcciones: derecha y abajo.  
+   - Ideal para laberintos sin “muros internos” complicados.
 
-El programa:
+2. **mazeSolverRecursivoCompleto**  
+   - Explora en las 4 direcciones: arriba, derecha, abajo e izquierda.  
+   - Emplea una matriz de `visited` para evitar ciclos y retrocesos infinitos.  
 
-- 📦 Crea un arreglo de objetos `Persona` con nombre y edad.
-- 🔃 Ordena el arreglo de personas por edad.
-- 🔎 Permite buscar una edad específica utilizando **búsqueda binaria**.
-- 🧠 Muestra paso a paso el proceso de búsqueda:
-  - Índices: `bajo`, `alto`, `centro`.
-  - Comparaciones realizadas.
-  - Dirección de búsqueda (izquierda o derecha).
-- ✅ Informa si el valor fue encontrado o no.
+El programa permite:  
+- 📦 Definir un laberinto mediante un arreglo 2D de `boolean`.  
+- 🔎 Buscar el camino desde una celda inicio hasta una celda fin.  
+- 🧠 Mostrar la ruta paso a paso y visualizarla sobre el laberinto.  
+- ✅ Notificar si existe o no una solución.
+
 
 ---
 
