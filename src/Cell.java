@@ -22,11 +22,10 @@ public class Cell {
         this.columna = columna;
     }
 
-    @Override
-    public String toString() {
-        return "Cell{" +
-                "fila=" + fila +
-                ", columna=" + columna +
-                '}';
-    }
+@Override
+public String toString() {
+    return "(" + fila + "," + columna + ")";
+}
+
+
 }

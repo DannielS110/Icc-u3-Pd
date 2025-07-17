@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class App {
        public static void main(String[] args) throws Exception {
@@ -27,32 +28,43 @@ public class App {
 
     //}
 
+    private static void runMaze() {
+        // Definición del laberinto
+        boolean[][] predefinedMaze = {
+            { true,  true,  true,  true },
+            { false, true,  true,  true },
+            { true,  true,  false, false },
+            { true,  true,  true,  true }
+        };
 
-private static void runMaze(){
-        boolean [][] predefinedMaze= {
-            {true, true,true,true},
-            {false,true,true,true} ,       
-            {true,true,false,false},
-            {true,true,true,true}};
-            //Clase MAZE variable globla predefinedMaze 
-    Maze maze = new Maze(predefinedMaze);
-            System.out.println("Version 2.0");
-        System.out.println("Autor: Daniel Sanchez\n");
-   
-    System.out.println("\n========= Laberinto:\n");
+        Maze maze = new Maze(predefinedMaze);
+        System.out.println("Versión 3.0");
+        System.out.println("Autor: Daniel Sánchez\n");
+        System.out.println("\n========= Laberinto:\n");
         maze.printMaze();
 
+        // Punto de inicio y fin
         Cell start = new Cell(0, 0);
         Cell end   = new Cell(3, 3);
 
+        // Lista de solvers disponibles
         List<mazeSolver> solvers = Arrays.asList(
-            new mazeSolverRecursivo()
+            new mazeSolverRecursivo(),            // índice 0: explora sólo derecha/abajo
+            new mazeSolverRecursivoCompleto()     // índice 1: explora 4 direcciones y evita ciclos
         );
-        mazeSolver solver = solvers.get(0);
 
+        // Elige el solver por índice (0 o 1)
+        mazeSolver solver = solvers.get(1);
+
+        // Calcula el camino
         List<Cell> path = solver.getPath(maze.getGrid(), start, end);
 
+        // Muestra el resultado
         System.out.println("\nCamino Encontrado:\n");
-        System.out.println(path);
-    }
+
+String ruta = path.stream()
+    .map(Cell::toString)
+    .collect(Collectors.joining(" ---> "));
+System.out.println("Camino encontrado (" + path.size() + " pasos):");
+System.out.println(ruta);    }
 }
