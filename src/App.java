@@ -23,7 +23,7 @@ public class App {
         mazeResult result = solver.solve(predefinedMaze, start, end);
 
         // Listado de coordenadas
-        System.out.println("Autor: michael yumbla");
+        System.out.println("Autor: Daniel Sanchez");
         System.out.println("RUTA VISITADA");
         String visitedList = result.getVisited().stream()
             .map(c -> "[" + c.row + "," + c.cole + "]")
