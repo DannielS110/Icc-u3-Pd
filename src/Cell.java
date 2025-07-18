@@ -1,31 +1,22 @@
 public class Cell {
-    int fila;
-    int columna;
-    public Cell(int fila, int columna) {
-        this.fila = fila;
-        this.columna = columna;
+    public int row;
+    public int cole;
+
+    public Cell(int row, int cole) {
+        this.row = row;
+        this.cole = cole;
     }
 
-    public int getFila() {
-        return fila;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cell)) return false;
+        Cell other = (Cell) o;
+        return row == other.row && cole == other.cole;
     }
 
-    public void setFila(int fila) {
-        this.fila = fila;
+    @Override
+    public int hashCode() {
+        return 31 * row + cole;
     }
-
-    public int getColumna() {
-        return columna;
-    }
-
-    public void setColumna(int columna) {
-        this.columna = columna;
-    }
-
-@Override
-public String toString() {
-    return "(" + fila + "," + columna + ")";
-}
-
-
 }

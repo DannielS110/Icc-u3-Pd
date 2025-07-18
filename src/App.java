@@ -1,70 +1,51 @@
-import java.util.Arrays;
+import java.util.Set;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class App {
-       public static void main(String[] args) throws Exception {
-        //runEjerciciosPD();
+    public static void main(String[] args) {
         runMaze();
     }
 
-    //private static void runEjerciciosPD() {
-       /*  EjerciciosPD ejerciciosPD = new EjerciciosPD();
-
-        System.out.println("Fibonacci Recursivo");
-        long start = System.nanoTime();
-        long resultado = ejerciciosPD.getFibonacci(50);
-        long end = System.nanoTime();
-        long duration = end - start;
-        System.out.println("Resultado = " + resultado + " en tiempo = " + duration);
-
-        System.out.println("Fibonacci Recursivo Caching");
-        start = 0;  
-        resultado = ejerciciosPD.getFibonacciPD(50);
-        end = 0;
-        duration = end - start;
-        System.out.println("Resultado = " + resultado + " en tiempo = " + duration);*/
-     
-
-    //}
-
     private static void runMaze() {
-        // Definición del laberinto
         boolean[][] predefinedMaze = {
             { true,  true,  true,  true },
-            { false, true,  true,  true },
+            { false, true,  false,  true },
             { true,  true,  false, false },
             { true,  true,  true,  true }
         };
 
         Maze maze = new Maze(predefinedMaze);
-        System.out.println("Versión 3.0");
-        System.out.println("Autor: Daniel Sánchez\n");
-        System.out.println("\n========= Laberinto:\n");
-        maze.printMaze();
-
-        // Punto de inicio y fin
         Cell start = new Cell(0, 0);
         Cell end   = new Cell(3, 3);
 
-        // Lista de solvers disponibles
-        List<mazeSolver> solvers = Arrays.asList(
-            new mazeSolverRecursivo(),            // índice 0: explora sólo derecha/abajo
-            new mazeSolverRecursivoCompleto()     // índice 1: explora 4 direcciones y evita ciclos
-        );
+        mazeSolver solver = new mazeSolverRecursivoCompletoBT();
+        mazeResult result = solver.solve(predefinedMaze, start, end);
 
-        // Elige el solver por índice (0 o 1)
-        mazeSolver solver = solvers.get(1);
+        // Listado de coordenadas
+        System.out.println("Autor: michael yumbla");
+        System.out.println("RUTA VISITADA");
+        String visitedList = result.getVisited().stream()
+            .map(c -> "[" + c.row + "," + c.cole + "]")
+            .collect(Collectors.joining(", "));
+        System.out.println("[" + visitedList + "]");
 
-        // Calcula el camino
-        List<Cell> path = solver.getPath(maze.getGrid(), start, end);
+        System.out.println("RUTA OPTIMA");
+        String pathList = result.getPath().stream()
+            .map(c -> "[" + c.row + "," + c.cole + "]")
+            .collect(Collectors.joining(", "));
+        System.out.println("[" + pathList + "]");
 
-        // Muestra el resultado
-        System.out.println("\nCamino Encontrado:\n");
+        System.out.println("Camino encontrado:");
+        System.out.println("[" + pathList + "]");
 
-String ruta = path.stream()
-    .map(Cell::toString)
-    .collect(Collectors.joining(" ---> "));
-System.out.println("Camino encontrado (" + path.size() + " pasos):");
-System.out.println(ruta);    }
+        // Visualización en forma de laberinto
+        System.out.println();
+        System.out.println("Laberinto con las celdas visitadas:");
+        maze.printMaze(result.getVisited());
+
+        System.out.println();
+        System.out.println("Laberinto con el camino recorrido:");
+        maze.printMaze(result.getPath());
+    }
 }
